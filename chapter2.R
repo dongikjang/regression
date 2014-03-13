@@ -44,7 +44,7 @@ data_2.1 <- read.xls2(tf, header=TRUE)
 library(Hmisc)
 latex(data_2.1, file="data_2.1.tex")
 
-pdf(paste(path2, "figure_2_1.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_2_1.pdf", sep=""), width=9.4, height=6.75)
 par(mar=c(4.5,5,5,2),cex.main=2, cex.lab=1.5, cex.axis=1.5)
 plot(data_2.1[,3:2], xlab="Age of Propellant(weeks)", ylab="Shear Strength(psi)", pch=19, cex=1.5)
 title(main="Figure 2.1", line=3)
@@ -52,7 +52,7 @@ par(cex.main=1.5)
 title(main="Scatter diagram of shear shrength vs prepellant age", line=1)
 abline(lm(data_2.1[,2:3]), col=2, lty=2, lwd=2)
 legend("topright", legend="linear regression line", lty=2, col=2, lwd=2)
-dev.off()
+#dev.off()
 
 
 colnames(data_2.1) <- c("obs", "yi", "xi")
@@ -69,17 +69,17 @@ fit<-fitted(lmfit)
 res <-residuals(lmfit)
 ta2.2 <- cbind(xi,fit,res)
 
-pdf(paste(path2, "figure_2_1_res.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_2_1_res.pdf", sep=""), width=9.4, height=6.75)
 par(mar=c(4.5,5,5,2),cex.main=2, cex.lab=1.5, cex.axis=1.5)
 plot(xi, res,  xlab="Age of Propellant(weeks)", ylab="Residuals", main="Residuals plot", pch=19, cex=2)
 abline(h=0, col=2, lty=2, lwd=2)
-dev.off()
+#dev.off()
 
-pdf(paste(path2, "figure_2_1_res2.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_2_1_res2.pdf", sep=""), width=9.4, height=6.75)
 par(mar=c(4.5,5,5,2),cex.main=2, cex.lab=1.5, cex.axis=1.5)
 plot(yi, res,  xlab="Shear Strength(psi)", ylab="Residuals", main="Residuals plot", pch=19, cex=2)
 abline(h=0, col=2, lty=2, lwd=2)
-dev.off()
+#dev.off()
 
 anova(lmfit)
 
@@ -130,7 +130,7 @@ interval.est<-predict(lmfit, data.frame(xi=x1), interval="confidence")
 head(interval.est)
 
 
-pdf(paste(path2, "figure_2_5.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_2_5.pdf", sep=""), width=9.4, height=6.75)
 par(mar=c(4.5,5,5,2),cex.main=2, cex.lab=1.5, cex.axis=1.5)
 plot(xi, yi ,pch=19,xlim=c(0,25),ylim=c(1500,3000),xlab="Age of Propellant(weeks)", ylab="Shear Strength(psi)", cex=1.5)
 title(main="Figure 2.5", line=3)
@@ -139,7 +139,7 @@ title(main="Interval estimation of mean response", line=1)
 abline(lmfit)
 lines(x1,interval.est[,2],lty=2,col=2,lwd=2)
 lines(x1,interval.est[,3],lty=2,col=2,lwd=2)
-dev.off()
+#dev.off()
 
 
 err1 <- t.025*sfit$sigma*sqrt(1+x0%*%xtxi%*%t(x0))
@@ -149,7 +149,7 @@ predict(lmfit,data.frame(xi=13.3625),interval="prediction")
 x1<-seq(0, 25, length=100)
 pred <- predict(lmfit, data.frame(xi=x1), interval="prediction")
 
-pdf(paste(path2, "figure_2_5_2.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_2_5_2.pdf", sep=""), width=9.4, height=6.75)
 par(mar=c(4.5,5,5,2),cex.main=2, cex.lab=1.5, cex.axis=1.5)
 plot(xi, yi ,pch=19,xlim=c(0,25),ylim=c(1500,3000),xlab="Age of Propellant(weeks)", ylab="Shear Strength(psi)", cex=1.5)
 title(main="Figure 2.5", line=3)
@@ -158,10 +158,10 @@ title(main="Prediction of new observation", line=1)
 abline(lmfit)
 lines(x1,pred[,2], lty=3, col=4, lwd=3)
 lines(x1,pred[,3], lty=3, col=4, lwd=3)
-dev.off()
+#dev.off()
 
 
-pdf(paste(path2, "figure_2_5_3.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_2_5_3.pdf", sep=""), width=9.4, height=6.75)
 par(mar=c(4.5,5,5,2),cex.main=2, cex.lab=1.5, cex.axis=1.5)
 plot(xi, yi ,pch=19,xlim=c(0,25),ylim=c(1500,3000),xlab="Age of Propellant(weeks)", ylab="Shear Strength(psi)", cex=1.5)
 title(main="Figure 2.5", line=3)
@@ -174,7 +174,7 @@ lines(x1,interval.est[,3],lty=2,col=2,lwd=3)
 lines(x1,pred[,2], lty=3, col=4, lwd=3)
 lines(x1,pred[,3], lty=3, col=4, lwd=3)
 legend("bottomleft", legend=c('interval','prediction') ,lty=c(2,3),col=c(2,4),lwd=3, cex=1.5)
-dev.off()
+#dev.off()
 
 
 
