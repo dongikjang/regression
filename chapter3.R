@@ -16,13 +16,13 @@ colnames(data_3.1) <- c("Observation", "Delivery Time(y)", "Number of Cases(x1)"
 library(Hmisc)
 latex(data_3.1[,-1], file="data_3.1.tex")
 
-pdf(paste(path2, "figure_3_1.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_3_1.pdf", sep=""), width=9.4, height=6.75)
 par(mar=c(4.5,5,5,2),cex.main=2, cex.lab=1.5, cex.axis=1.5)
 pairs(data_3.1[,2:4], pch=19, cex=1.5)
-dev.off()
+#dev.off()
 
 
-pdf(paste(path2, "figure_3_1_2.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_3_1_2.pdf", sep=""), width=9.4, height=6.75)
 library(lattice)	#need lattice package 
 trellis.par.get('background')$col
 trellis.par.set(theme=col.whitebg())
@@ -33,7 +33,7 @@ cloud(data_3.1[,2]~data_3.1[,3]*data_3.1[,4], cex=1.5,
 	  xlab=colnames(data_3.1)[3], 
 	  ylab=colnames(data_3.1)[4],
 	  zlab=colnames(data_3.1)[2])
-dev.off()
+#dev.off()
 
 
 library(rgl)
@@ -128,14 +128,14 @@ str(predict(lmfit, x0, se=TRUE))
 predict(lmfit, x0, interval="confidence")
 predict(lmfit, x0, interval="prediction")
 
-pdf(paste(path2, "figure_3_4.pdf", sep=""), width=9.4, height=6.75)
+#pdf(paste(path2, "figure_3_4.pdf", sep=""), width=9.4, height=6.75)
 library(ellipse) #need ellipse package 
 par(cex.lab=1.5)
 plot(ellipse(lmfit, c(2,3)), type="l", lwd=2, xlab="Number of Cases(x1)", ylab="Distanc(x2)") 
 points(coef(lmfit)[2], coef(lmfit)[3], pch=19, col=2, cex=2) 
 abline(v=confint(lmfit)[2,], lty=2, col=4, lwd=2) 
 abline(h=confint(lmfit)[3,], lty=2, col=4, lwd=2)
-dev.off()
+#dev.off()
 
 
 
